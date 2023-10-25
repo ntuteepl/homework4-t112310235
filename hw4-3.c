@@ -40,17 +40,27 @@ int main() {
             cars++;
             break;
         }
+        //   開始<結束
         if(s[j+1]<d[i]){
                 cars++;
         }
+        //    開始>結束
          if(s[j+1]>=d[i]){
                 cars=cars;
         }
+        
 
     }
     }
 
         printf("%d\n", cars);
+        int driver;
+        for(driver=1;driver <= cars;driver++){
+              printf("Driver %d's schedule is", driver );
+              
+        }
+        
+        
 
     // 输出排序后的订单数据
     for (int i = 0; i < N; i++) {
