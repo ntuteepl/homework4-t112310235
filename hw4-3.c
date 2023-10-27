@@ -6,9 +6,9 @@ int main() {
     int N;
     scanf("%d", &N);
     int sd[N][2];
-   /* int s[N], d[N];
+    //int s[N], d[N];
 
-    for (int i = 0; i < N; i++) {
+    /*for (int i = 0; i < N; i++) {
         scanf("%d %d", &s[i], &d[i]);
     }*/
      for (int i = 0; i < N; i++) {
@@ -17,7 +17,7 @@ int main() {
 
 
     // 使用冒泡排序对订单数据按开始时间 s 进行排序
-   /* for (int i = 0; i < N - 1; i++) {
+   /*for (int i = 0; i < N - 1; i++) {
         for (int j = 0; j < N - i - 1; j++) {
             if (s[j] > s[j + 1] || (s[j] == s[j+1] && d[j] > d[j+1])) {
                 int temp = s[j];
@@ -29,8 +29,8 @@ int main() {
                 d[j + 1] = temp;
         }
     }
-    }
-    */
+    }*/
+int cars;
       for (int i = 0; i < N - 1; i++) {
         for (int j = 0; j < N - i - 1; j++) {
             if (sd[j][0] > sd[j + 1][0]||(sd[j][0] == sd[j + 1][0] && sd[j][1] > sd[j+1][1])) {
@@ -44,7 +44,6 @@ int main() {
             }
         }
     }
-        int cars=1;
 
         for (int i=0;i<N;i++){
             for (int j=0;j<N;j++){
@@ -64,22 +63,21 @@ int main() {
 
                 cars++;
         }
-        //    開始>結束
-         if(sd[j+1][0]>=sd[i][1]){
-                cars=cars;
-        }
+
+
 
     }
 }
 
 
-  /* for (int i=0;i<N;i++){
+
+  /*for (int i=0;i<N;i++){
         for (int j=0;j<N;j++){
          if(j<i)  {
             j=i+1;
          }
 
-        if(s[i]==s[j]){
+        if(s[i]==s[j+1]){
             cars++;
             break;
         }
@@ -107,13 +105,13 @@ int main() {
 
 
     // 输出排序后的订单数据
-   /* for (int i = 0; i < N; i++) {
+   /*for (int i = 0; i < N; i++) {
         printf("%d %d\n", s[i], d[i]);
-    }
-    */
-    for (int i = 0; i < N; i++) {
+    }*/
+
+    /*for (int i = 0; i < N; i++) {
         printf("%d %d\n", sd[i][0], sd[i][1]);
-    }
+    }*/
 
 
     return 0;
