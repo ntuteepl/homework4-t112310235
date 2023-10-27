@@ -44,16 +44,16 @@ int main() {
             }
         }
     }
-        int cars=0;
+        int cars=1;
 
         for (int i=0;i<N;i++){
             for (int j=0;j<N;j++){
-                if(sd[i][0]!=0&&sd[i][1]!=0){
+
                     if(j<i)  {
                         j=i+1;
                     }
 
-        if(sd[i][0]==sd[j][0]){
+        if(sd[i][0]==sd[j+1][0]){
             cars++;
 
             break;
@@ -71,7 +71,7 @@ int main() {
 
     }
 }
-}
+
 
   /* for (int i=0;i<N;i++){
         for (int j=0;j<N;j++){
@@ -96,11 +96,12 @@ int main() {
     }
     }*/
 
-        printf("%d\n", cars+1);
+        printf("%d\n", cars);
         int driver;
         for(driver=1;driver <= cars;driver++){
-              printf("Driver %d's schedule is", driver );
+              printf("Driver %d's schedule is\n", driver );
 
+           // for(i=0;)
         }
 
 
