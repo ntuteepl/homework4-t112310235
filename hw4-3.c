@@ -5,6 +5,7 @@
 int main() {
     int n = 0;
     int sd[ARRAYSIZE][2];
+    int t[ARRAYSIZE][2];
     int cars = 0; // 初始化为0
     while (scanf("%d %d", &sd[n][0], &sd[n][1]) != EOF) {
         n++;
@@ -24,6 +25,12 @@ int main() {
             }
         }
     }
+     for (int i = 0; i < n; i++)
+     {
+         t[i][0]=sd[i][0];
+         t[i][1]=sd[i][1];
+     }
+
 
     for (int i = 0; i < n; i++) {
         if (sd[i][0] != 0) { // Skip already processed rows
@@ -40,10 +47,24 @@ int main() {
         }
     }
 
-    printf("%d\n", cars);
-    int current_driver = 1;
-    
-    
+   printf("%d\n", cars);
+   cars=0;
+    for (int i = 0; i < n; i++) {
+        if (t[i][0] != 0) { // Skip already processed rows
+            cars++;
+            printf("Driver %d's schedule is %d %d ", cars, t[i][0], t[i][1]);
+
+            for (int j = i + 1; j < n; j++) {
+                if (t[j][0] >= t[i][1]) {
+                    // 当前任务可以分配给当前司机
+                    printf("%d %d ", t[j][0], t[j][1]);
+                    t[i][1] = t[j][1];
+                    t[j][0]=0; // 更新当前司机的结束时间
+                }
+            }
+            printf("\n");
+        }
+    }
 
     return 0;
 }
