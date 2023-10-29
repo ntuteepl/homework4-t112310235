@@ -12,16 +12,16 @@ int main() {
 
     int N;
 
-    scanf("%d", &N);
+    scanf("%d\n", &N);
 
     for (int i = 0; i < N; i++) {
         int account, password;
 
-        scanf("%d %d", &account, &password);
+        scanf("%d %d\n", &account, &password);
         int found = 0;
         for (int j = 0; j < 6; j++) {
             if (AP[j][0] == account && AP[j][1] == password) {
-                printf("%d", AP[j][2]);
+                printf("%d\n", AP[j][2]);
                 found = 1;
                 break;
             }
