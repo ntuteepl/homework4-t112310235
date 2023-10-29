@@ -1,39 +1,19 @@
-#define ARRAYSIZE k
+#define ARRAYSIZE 100
+
 #include <stdio.h>
 
-
 int main() {
-    int N;
-    scanf("%d", &N);
-    int sd[N][2];
-    //int s[N], d[N];
-
-    /*for (int i = 0; i < N; i++) {
-        scanf("%d %d", &s[i], &d[i]);
-    }*/
-     for (int i = 0; i < N; i++) {
-        scanf("%d %d", &sd[i][0], &sd[i][1]);
+    int n = 0;
+    int sd[ARRAYSIZE][2];
+    int cars = 0; // 初始化为0
+    while (scanf("%d %d", &sd[n][0], &sd[n][1]) != EOF) {
+        n++;
     }
 
-
-    // 使用冒泡排序对订单数据按开始时间 s 进行排序
-   /*for (int i = 0; i < N - 1; i++) {
-        for (int j = 0; j < N - i - 1; j++) {
-            if (s[j] > s[j + 1] || (s[j] == s[j+1] && d[j] > d[j+1])) {
-                int temp = s[j];
-                s[j] = s[j + 1];
-                s[j + 1] = temp;
-
-                temp = d[j];
-                d[j] = d[j + 1];
-                d[j + 1] = temp;
-        }
-    }
-    }*/
-int cars;
-      for (int i = 0; i < N - 1; i++) {
-        for (int j = 0; j < N - i - 1; j++) {
-            if (sd[j][0] > sd[j + 1][0]||(sd[j][0] == sd[j + 1][0] && sd[j][1] > sd[j+1][1])) {
+    // 冒泡排序
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (sd[j][0] > sd[j + 1][0] || (sd[j][0] == sd[j + 1][0] && sd[j][1] > sd[j + 1][1])) {
                 // Swap the rows if the first column element is out of order
                 int temp1 = sd[j][0];
                 int temp2 = sd[j][1];
@@ -45,74 +25,25 @@ int cars;
         }
     }
 
-        for (int i=0;i<N;i++){
-            for (int j=0;j<N;j++){
-
-                    if(j<i)  {
-                        j=i+1;
-                    }
-
-        if(sd[i][0]==sd[j+1][0]){
+    for (int i = 0; i < n; i++) {
+        if (sd[i][0] != 0) { // Skip already processed rows
             cars++;
+            int current_time = sd[i][1]; // 当前司机的时间表
 
-            break;
+            for (int j = i + 1; j < n; j++) {
+                if (sd[j][0] >= current_time) {
+                    // 当前任务可以分配给当前司机
+                    current_time = sd[j][1];
+                    sd[j][0] = 0; // 将任务标记为已分配
+                }
+            }
         }
-        //   開始<結束
-        if(sd[j+1][0]<sd[i][1]){
-
-
-                cars++;
-        }
-
-
-
     }
-}
 
-
-
-  /*for (int i=0;i<N;i++){
-        for (int j=0;j<N;j++){
-         if(j<i)  {
-            j=i+1;
-         }
-
-        if(s[i]==s[j+1]){
-            cars++;
-            break;
-        }
-        //   開始<結束
-        if(s[j+1]<d[i]){
-                cars++;
-        }
-        //    開始>結束
-         if(s[j+1]>=d[i]){
-                cars=cars;
-        }
-
-
-    }
-    }*/
-
-        printf("%d\n", cars);
-        int driver;
-        for(driver=1;driver <= cars;driver++){
-              printf("Driver %d's schedule is\n", driver );
-
-           // for(i=0;)
-        }
-
-
-
-    // 输出排序后的订单数据
-   /*for (int i = 0; i < N; i++) {
-        printf("%d %d\n", s[i], d[i]);
-    }*/
-
-    /*for (int i = 0; i < N; i++) {
-        printf("%d %d\n", sd[i][0], sd[i][1]);
-    }*/
-
+    printf("%d\n", cars);
+    int current_driver = 1;
+    
+    
 
     return 0;
 }
